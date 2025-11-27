@@ -10,7 +10,7 @@ with left_col:
     connections, ping_results = connect_node(nodes)
     conn = connections["Node 1"]  # Main connection
 
-    st.header("Node Status")
+    st.header("NODE STATUS")
     cols = st.columns(len(nodes), gap="large")
     for i, (node_name, status) in enumerate(ping_results.items()):
         with cols[i]:
@@ -21,7 +21,7 @@ with left_col:
                 st.error("● Unreachable")
 
     # --- Isolation Level ---
-    st.header("Isolation Level")
+    st.header("ISOLATION LEVEL")
     isolation_levels = ["READ UNCOMMITTED", "READ COMMITTED", "REPEATABLE READ", "SERIALIZABLE"]
     selected_level = st.selectbox("Transaction Isolation Level", isolation_levels)
 
@@ -41,19 +41,19 @@ with right_col:
     with col1:
         st.markdown("<h3 style='text-align: center;'>Add Title</h3>", unsafe_allow_html=True) 
         add_title = st.text_input("Title", key="add_title")
-        add_year = st.number_input("Year", min_value=1900, max_value=2100, key="add_year")
+        add_year = st.number_input("Year", min_value=1900, max_value=2100, step=1, key="add_year")
         add_genre = st.text_input("Genre", key="add_genre")
              
     with col2:
         st.markdown("<h3 style='text-align: center;'>Update Title</h3>", unsafe_allow_html=True) 
-        upd_id = st.number_input("ID", key="upd_id")
+        upd_id = st.number_input("ID", step=1, key="upd_id")
         upd_title = st.text_input("Title", key="upd_title")
-        upd_year = st.number_input("Year", min_value=1900, max_value=2100, key="upd_year")
+        upd_year = st.number_input("Year", min_value=1900, max_value=2100, step=1, key="upd_year")
         upd_genre = st.text_input("Genre", key="upd_genre")
         
     with col3:
         st.markdown("<h3 style='text-align: center;'>Delete Title</h3>", unsafe_allow_html=True) 
-        del_id = st.number_input("ID", key="del_id")
+        del_id = st.number_input("ID", step=1, key="del_id")
         
     col1, col2, col3 = st.columns(3, gap="large")
 
